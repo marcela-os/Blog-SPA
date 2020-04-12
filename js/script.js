@@ -16,18 +16,25 @@ for(let link of links){
 
 
 const titleClickHandler = function(event){
-  console.log(event);
+  /*console.log(event);*/
+  const clickedElement = this;
+  console.log('Link was clicked!');
 
-  /* remove class 'active' from all article links  */
+  /* [DONE] remove class 'active' from all article links  */
+
 const activeLinks = document.querySelectorAll('.titles a.active');
 
-for(let activeLink of activeLinks){
- activeLink.classList.remove('active');
-}
+  for(let activeLink of activeLinks){
+    activeLink.classList.remove('active');
+  }
 
-  /* add class 'active' to the clicked link */
+  /* [DONE] add class 'active' to the clicked link */
 
-  /* remove class 'active' from all articles */
+console.log('clickedElement (with plus): ' + clickedElement);
+clickedElement.classList.add('active');
+
+  /* [DONE] remove class 'active' from all articles */
+  
 const activeArticles = document.querySelectorAll('.post');
 
 for(let activeArticle of activeArticles){
