@@ -77,6 +77,9 @@ const articles = document.querySelectorAll(optArticleSelector);
   for(let articles of articles){
   article.classList.remove('post');
 }
+let html = '';
+
+  for(let article of articles){
 
     /* get the article id */
 
@@ -89,18 +92,28 @@ const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
     /* get the title from the title element */
 
+const linkHTML = '<li><a href="#"' + articleId + '><span>' + articleTitle + '</span></a></li>';
+console.log (articleTitle);
+
     /* create HTML of the link */
 
+//titleList.innerHTML = titleList.innerHTML + linkHTML;
+titleList.insertAdjacentHTML('afterend', linkHTML);
+
     /* insert link into titleList */
+    html = html + linkHTML;
+      }
+      console.log('html:', html);
 
+      titleList.innerHTML = html;
+    }
+
+    generateTitleLinks();
 }
 
-generateTitleLinks();
-
-
-}
 const links = document.querySelectorAll('.titles a');
+console.log(links);
 
   for(let link of links){
   link.addEventListener('click', titleClickHandler);
-  }
+}
