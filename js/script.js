@@ -16,7 +16,7 @@ for(let link of links){
 
 
 const titleClickHandler = function(event){
-  /*console.log(event);*/
+  //console.log(event);
   event.preventDefault();
   const clickedElement = this;
   console.log('Link was clicked!');
@@ -38,7 +38,7 @@ clickedElement.classList.add('active');
 
 const activeArticles = document.querySelectorAll('.post');
 
-for(let activeArticle of activeArticles){
+  for(let activeArticle of activeArticles){
   activeArticle.classList.remove('active');
 }
 
@@ -47,17 +47,18 @@ for(let activeArticle of activeArticles){
 const articleSelector = clickedElement.getAttribute('href');
   console.log ('Link was clicked!', clickedElement);
 
-
-  /* [PROBLEM WITH CONSOLE.LOG] find the correct article using the selector (value of 'href' attribute) */
+  /* [DONE] find the correct article using the selector (value of 'href' attribute) */
 
 const targetArticle = clickedElement.querySelector('href');
 console.log (clickedElement);
 
-  /* add class 'active' to the correct article */
-}
+  /* [DONE] add class 'active' to the correct article */
 
+clickedElement.classList.add('active')
+
+}
 const links = document.querySelectorAll('.titles a');
 
-for(let link of links){
+  for(let link of links){
   link.addEventListener('click', titleClickHandler);
-}
+  }
