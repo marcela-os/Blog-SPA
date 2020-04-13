@@ -56,6 +56,46 @@ console.log (clickedElement);
 
 clickedElement.classList.add('active')
 
+
+const optArticleSelector = '.post',
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles';
+
+function generateTitleLinks(){
+
+  /* remove contents of titleList */
+
+//const titleList = document.querySelector(optTitleListSelector).innerHTML = '';
+
+const titleList = document.querySelector(optTitleListSelector);
+    console.log(titleList);
+    titleList.innerHTML = '';
+
+  /* for each article */
+
+const articles = document.querySelectorAll(optArticleSelector);
+  for(let articles of articles){
+  article.classList.remove('post');
+}
+
+    /* get the article id */
+
+const articleId = article.getAttribute('id');
+console.log ('Get id', articleId);
+
+    /* find the title element */
+
+    /* get the title from the title element */
+
+    /* create HTML of the link */
+
+    /* insert link into titleList */
+
+}
+
+generateTitleLinks();
+
+
 }
 const links = document.querySelectorAll('.titles a');
 
