@@ -1,11 +1,11 @@
 'use strict';
 
-const titleClickHandler = function(event){
+const titleClickHandler = function (event) {
   event.preventDefault();
   const clickedElement = this;
   const activeLinks = document.querySelectorAll('.titles a.active');
 
-  for(let activeLink of activeLinks){
+  for (let activeLink of activeLinks) {
     activeLink.classList.remove('active');
   }
 
@@ -13,7 +13,7 @@ const titleClickHandler = function(event){
 
   const activeArticles = document.querySelectorAll('.post.active');
 
-  for(let activeArticle of activeArticles){
+  for (let activeArticle of activeArticles) {
     activeArticle.classList.remove('active');
   }
 
@@ -27,7 +27,7 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles';
 
-function generateTitleLinks(){
+function generateTitleLinks() {
   const titleList = document.querySelector(optTitleListSelector);
 
   titleList.innerHTML = '';
@@ -35,7 +35,7 @@ function generateTitleLinks(){
   const articles = document.querySelectorAll(optArticleSelector);
   let html = '';
 
-  for(let article of articles){
+  for (let article of articles) {
     const articleId = article.getAttribute('id');
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
@@ -45,12 +45,12 @@ function generateTitleLinks(){
     html = html + linkHTML;
   }
 
-  titleList.innerHTML = html;
+  titleList.innerHTML = html
 
   const links = document.querySelectorAll('.titles a');
   console.log(links);
 
-  for(let link of links){
+  for (let link of links) {
     link.addEventListener('click', titleClickHandler);
   }
 
