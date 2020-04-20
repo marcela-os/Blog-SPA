@@ -118,3 +118,22 @@ function addClickListenersToTags(){
 }
 
 addClickListenersToTags();
+
+function generateAuthors () {
+	const articles = document.querySelectorAll(optArticleSelector);
+
+	for (let article of articles) {
+	  const author = article.querySelector('.post .post-author');
+	  let html = '';
+	  const authorTags = article.getAttribute('data-author');
+    const linkHTML = '<a href="#' + authorTags + '"><span>' + authorTags + '</span></a>';
+
+		author.insertAdjacentHTML('beforeend', linkHTML);
+
+		html = html + linkHTML;
+
+		author.innerHTML = html
+	}
+
+}
+generateAuthors ();
