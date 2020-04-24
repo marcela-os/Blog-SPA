@@ -97,7 +97,6 @@ function tagClickHandler(event){
   }
 
   const tagLinks = document.querySelectorAll('a[href="' + href + '"]');
-	console.log('tagLinks', tagLinks);
 
 	for (let tagLink of tagLinks) {
 		tagLink.classList.add('active');
@@ -141,9 +140,7 @@ function authorClickHandler(event){
   const clickedElement = this;
 
 	const href = clickedElement.getAttribute('href');
-	console.log('href', href);
   const author = href.replace('#author-', '');
-	console.log('author', aurthor);
   const dataAuthors = document.querySelectorAll('a.active[href^="#author-"]');
 
   for (let dataAuthor of dataAuthors) {
@@ -151,7 +148,6 @@ function authorClickHandler(event){
   }
 
   const authorLinks = document.querySelectorAll('a[href="' + href + '"]');
-	console.log('authorLinks', authorLinks);
 
 	for (let authorLink of authorLinks) {
 		authorLink.classList.add('active');
@@ -160,14 +156,11 @@ function authorClickHandler(event){
 generateTitleLinks('[data-author="' + author + '"]');
 }
 
-authorClickHandler();
-
 function addClickListenersToAuthors(){
-
 	const links = document.querySelectorAll('a[href^="#author-"]');
 
   for (let link of links) {
-    link.addEventListener('click', tagClickHandler);
+    link.addEventListener('click', authorClickHandler);
   }
 
 }
