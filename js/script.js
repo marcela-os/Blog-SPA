@@ -143,7 +143,7 @@ function generateTags() {
     const articleTagsArray = articleTags.split(' ');
 
     for(let tag of articleTagsArray) {
-			const linkHTMLData = {id: tag, title: tag};
+			const linkHTMLData = {datatags: tag};
 			const linkHTML = templates.tagLink(linkHTMLData);
       //const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li> ';
 
@@ -228,7 +228,7 @@ function generateAuthors () {
 	  const author = article.querySelector(optArticleAuthorSelector);
 	  let html = '';
 	  const authorName = article.getAttribute('data-author');
-		const linkHTMLData = {id: authorName, title: authorName};
+		const linkHTMLData = {dataauthor: authorName};
 		const linkHTML = templates.authorLink(linkHTMLData);
     //const linkHTML = '<a href="#author-' + authorName + '"><span>' + authorName + '</span></a>';
 
