@@ -82,18 +82,18 @@ function calculateTagsParams (tags) {
 	return params;
 }
 
-function calculateAuthorsParams (articleAuthor) {
+function calculateAuthorsParams (authors) {
 	const params = {
     max: '0',
     min: '999999'
   };
 
 	for(let author in authors){
-  console.log(author + ' is used ' + authors[articleAuthor] + ' times');
-		if (authors[articleAuthor] > params.max) {
-      params.max = authors[articleAuthor];
-    }if (authors[articleAuthor] < params.min) {
-      params.min = authors[articleAuthor];
+  console.log(author + ' is used ' + authors[author] + ' times');
+		if (authors[author] > params.max) {
+      params.max = authors[author];
+    }if (authors[author] < params.min) {
+      params.min = authors[author];
     }
 	}
 
@@ -218,10 +218,10 @@ function generateAuthors () {
 
 		html = html + linkHTML;
 
-		if(!allAuthors[articleAuthor]) {
-		allAuthors[articleAuthor] = 1;
+		if(!allAuthors[article]) {
+		allAuthors[article] = 1;
 		} else {
-		allAuthors[articleAuthor]++;
+		allAuthors[article]++;
 		}
 
 		articles.innerHTML = html
@@ -235,11 +235,11 @@ function generateAuthors () {
   for(let articleAuthor in allAuthors){
 		const articleAuthor = document.querySelector(optAuthorsListSelector);
 		//const authorLinkHTML = '<li><a href="#author-' + articleAuthor + '">' + articleAuthor + ' (' + allAuthors[articleAuthor] + ')</a></li>';
-		const authorLinkHTML = '<li><a class="' + calculateAuthorClass(allAuthors[articleAuthor], authorsParams) +'" href="#author-' + articleAuthor + '">' + articleAuthor + '</a></li> ';
+		const authorLinkHTML = '<li><a class="' + calculateAuthorClass(allAuthors[articleAuthor], authorParams) +'" href="#author-' + articleAuthor + '">' + articleAuthor + '</a></li> ';
 		console.log('authorLink', authorLinkHTML);
 		allAuthorsHTML += authorLinkHTML;
 
-		articleAuthor.insertAdjacentHTML('beforeend', authorLinkHTML + ' (' + allAuthors[author] + ') ');
+		articleAuthor.insertAdjacentHTML('beforeend', authorLinkHTML + ' (' + allAuthors[articleAuthor] + ') ');
 	}
 
 	authorsList.innerHTML = allAuthorsHTML;
