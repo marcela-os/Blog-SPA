@@ -1,5 +1,11 @@
 'use strict';
 
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+	tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+	authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
+}
+
 const titleClickHandler = function (event) {
   event.preventDefault();
   const clickedElement = this;
@@ -46,7 +52,9 @@ function generateTitleLinks(customSelector = ''){
   for (let article of articles) {
     const articleId = article.getAttribute('id');
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+		const linkHTMLData = {id: articleId, title: articleTitle};
+		const linkHTML = templates.articleLink(linkHTMLData);
+    //const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 
     titleList.insertAdjacentHTML('beforeend', linkHTML);
 
@@ -133,7 +141,9 @@ function generateTags() {
     const articleTagsArray = articleTags.split(' ');
 
     for(let tag of articleTagsArray) {
-      const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li> ';
+			const linkHTMLData = {id: tag, title: tag};
+			const linkHTML = templates.tagLink(linkHTMLData);
+      //const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li> ';
 
       titleList.insertAdjacentHTML('beforeend', linkHTML);
 
@@ -208,7 +218,9 @@ function generateAuthors () {
 	  const author = article.querySelector(optArticleAuthorSelector);
 	  let html = '';
 	  const authorName = article.getAttribute('data-author');
-    const linkHTML = '<a href="#author-' + authorName + '"><span>' + authorName + '</span></a>';
+		const linkHTMLData = {id: authorName, title: authorName};
+		const linkHTML = templates.authorLink(linkHTMLData);
+    //const linkHTML = '<a href="#author-' + authorName + '"><span>' + authorName + '</span></a>';
 
 		author.insertAdjacentHTML('beforeend', linkHTML);
 
